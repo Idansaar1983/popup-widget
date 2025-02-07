@@ -4,21 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pop-Up Widget</title>
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
     <script>
         window.onload = function() {
-            // בודק אם הפופ-אפ כבר נפתח
-            if (!localStorage.getItem("popupOpened")) {
-                setTimeout(function() {
-                    let popup = window.open('https://idansaar1983.github.io/popup-widget/', '_blank', 'width=600,height=800');
-
-                    // אם הפופ-אפ נפתח בהצלחה - שמור שהוא כבר נפתח
-                    if (popup) {
-                        localStorage.setItem("popupOpened", "true");
-                    } else {
-                        alert("Please allow pop-ups to view the widget.");
-                    }
-                }, 2000); // פותח את הפופ-אפ אחרי 2 שניות
-            }
+            setTimeout(function() {
+                window.open('https://idansaar1983.github.io/popup-widget/', '_blank', 'width=600,height=800');
+            }, 2000); // פותח את הפופ-אפ אחרי 2 שניות
         };
     </script>
     <style>
@@ -30,5 +21,7 @@
     </style>
 </head>
 <body>
+    <!-- פופ-אפ של Elfsight -->
+    <div class="elfsight-app-c7767e8c-271a-429d-9e77-d1e04a2d0733" data-elfsight-app-lazy></div>
 </body>
 </html>
