@@ -6,12 +6,17 @@
     <title>Pop-Up Widget</title>
     <script>
         window.onload = function() {
-            setTimeout(function() {
-                let popup = window.open('https://idansaar1983.github.io/popup-widget/', '_blank', 'width=600,height=800');
-                if (!popup || popup.closed || typeof popup.closed == 'undefined') { 
-                    alert("Please allow pop-ups to view the widget.");
-                }
-            }, 2000); // הפופ-אפ ייפתח אחרי 2 שניות
+            // בודק אם הפופ-אפ כבר נפתח
+            if (!sessionStorage.getItem("popupOpened")) {
+                setTimeout(function() {
+                    let popup = window.open('https://idansaar1983.github.io/popup-widget/', '_blank', 'width=600,height=800');
+                    if (!popup || popup.closed || typeof popup.closed == 'undefined') { 
+                        alert("Please allow pop-ups to view the widget.");
+                    } else {
+                        sessionStorage.setItem("popupOpened", "true"); // מסמן שהפופ-אפ כבר נפתח
+                    }
+                }, 2000); // פותח את הפופ-אפ אחרי 2 שניות
+            }
         };
     </script>
 </head>
