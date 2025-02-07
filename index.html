@@ -7,12 +7,12 @@
     <script src="https://static.elfsight.com/platform/platform.js" async></script>
     <script>
         window.onload = function() {
-            // אם הפופ-אפ כבר נפתח, לא להפעיל אותו שוב
+            // בודק אם הפופ-אפ נפתח בעבר
             if (!localStorage.getItem("popupOpened")) {
                 setTimeout(function() {
                     let popup = window.open('https://idansaar1983.github.io/popup-widget/', '_blank', 'width=600,height=800');
 
-                    // אם הפופ-אפ נפתח בהצלחה, שמור שהוא כבר נפתח
+                    // אם הפופ-אפ נפתח בהצלחה, מסמן אותו כפתוח לצמיתות
                     if (popup) {
                         localStorage.setItem("popupOpened", "true");
                     } else {
