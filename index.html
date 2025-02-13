@@ -9,17 +9,20 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // בדיקה אם הפופ-אפ כבר נפתח בביקור הזה
-            if (!sessionStorage.getItem("popupOpened")) {
-                setTimeout(function () {
-                    // אם לא נפתח עדיין, נפתח את הפופ-אפ של Elfsight
+            // מחכה 30 שניות ואז מפעיל את הפופ-אפ אם הוא לא נפתח קודם
+            setTimeout(function () {
+                if (!sessionStorage.getItem("popupOpened")) {
                     let popupElement = document.querySelector(".elfsight-app-c7767e8c-271a-429d-9e77-d1e04a2d0733");
+                    
                     if (popupElement) {
-                        popupElement.style.display = "block"; // מציג את הפופ-אפ אם הווידג'ט קיים
-                        sessionStorage.setItem("popupOpened", "true"); // מסמן שהפופ-אפ כבר נפתח בביקור הזה
+                        console.log("מציג את הפופ-אפ...");
+                        popupElement.style.display = "block"; // מציג את הווידג'ט
+                        sessionStorage.setItem("popupOpened", "true");
+                    } else {
+                        console.warn("Elfsight widget not found!");
                     }
-                }, 30000); // ממתין 30 שניות לפני פתיחת הפופ-אפ
-            }
+                }
+            }, 30000); // הפעלה אחרי 30 שניות
         });
     </script>
 
@@ -30,12 +33,14 @@
             padding: 0;
         }
         .elfsight-app-c7767e8c-271a-429d-9e77-d1e04a2d0733 {
-            display: none; /* מתחיל מוסתר עד שייפתח */
+            display: none; /* מתחיל מוסתר */
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 1000;
+            width: 90%;
+            max-width: 600px;
         }
     </style>
 </head>
